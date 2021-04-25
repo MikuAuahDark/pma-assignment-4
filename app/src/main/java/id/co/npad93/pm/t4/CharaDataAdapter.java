@@ -1,8 +1,8 @@
 package id.co.npad93.pm.t4;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +13,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class CharaDataAdapter extends RecyclerView.Adapter<CharaDataAdapter.ViewHolder> {
-    public CharaDataAdapter(Activity activity) {
-        this.activity = activity;
+    public CharaDataAdapter(Context context) {
+        this.context = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_selection_list, parent, false);
-        ViewHolder holder = new ViewHolder(view, activity);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_character, parent, false);
+        ViewHolder holder = new ViewHolder(view, context);
         view.setOnClickListener(holder);
         return holder;
     }
@@ -43,13 +43,13 @@ public class CharaDataAdapter extends RecyclerView.Adapter<CharaDataAdapter.View
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         CharaData character;
 
-        Activity activity;
+        Context context;
         TextView name, affiliation;
         ImageView image;
 
-        public ViewHolder(@NonNull View itemView, Activity a) {
+        public ViewHolder(@NonNull View itemView, Context a) {
             super(itemView);
-            activity = a;
+            context = a;
             name = itemView.findViewById(R.id.textView);
             affiliation = itemView.findViewById(R.id.textView2);
             image = itemView.findViewById(R.id.imageView);
@@ -57,11 +57,11 @@ public class CharaDataAdapter extends RecyclerView.Adapter<CharaDataAdapter.View
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(activity, DescActivity.class)
+            Intent intent = new Intent(context, DescActivity.class)
                 .putExtra("name", character.getName());
-            activity.startActivity(intent);
+            context.startActivity(intent);
         }
     }
 
-    private Activity activity;
+    private Context context;
 }

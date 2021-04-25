@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_chara_category"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Character" />
+    <item
+        android:id="@+id/menu_element_category"
+        android:icon="@drawable/ic_baseline_wifi_protected_setup_24"
+        android:title="Elements" />
+    <item
+        android:id="@+id/menu_about_category"
+        android:icon="@drawable/ic_baseline_info_24"
+        android:title="About" />
+</menu>
